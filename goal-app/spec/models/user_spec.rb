@@ -34,10 +34,22 @@ RSpec.describe User, type: :model do
     it { expect(user.is_password?("psswrd")).to eq(false)}
     # R
     # testing that session token changes after running reset_session_token!
-    it { expect(user.session_token ).to }
+    it { expect(user.session_token ).not_to be_nil }
+    
+    it 'changes the session_token when call the r e function' do
+      old_session_token = subject.session_token
+      new_session_token = subject.reset_session_token! 
+      expect(old_session_token).not_to eq(new_session_token)
 
+    end
 
+    it 'should set password reader' do
+      subject.password.eq
+
+    end
   end
+
+ 
 end
 
 password=(password)
